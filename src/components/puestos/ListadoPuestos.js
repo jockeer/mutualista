@@ -2,26 +2,38 @@ import React, {Fragment,useContext} from 'react';
 
 import Puesto from './Puesto'
 
+// import puestoContext from '../../context/puestos/puestoContext'
+import sectorContext from '../../context/sectores/sectorContext'
 import puestoContext from '../../context/puestos/puestoContext'
 
 const ListadoPuestos = () => {
 
-    //Extraer puestos de state inicial
-    const puestosContext = useContext(puestoContext);
-    const { puestos } = puestosContext;
+    
 
-    //Revisar puestos tienen contenido
-    if(puestos.length === 0){
-        return null;
+    
+    const sectoresContext = useContext(sectorContext);
+    const {sector} = sectoresContext
+    
+    const puestosContext = useContext(puestoContext);
+    const {puestossector} = puestosContext
+    
+    if(!sector){
+        return <h2>Selecciona un proyecto</h2>
     }
+
+    //aplicando arra destructure
+    const [sectorActual] = sector
+
+    
+
     
     return ( 
         <Fragment>
-            <h2>Sector: Sector Carne </h2>
+            <h2>Sector: {sectorActual.nombre} </h2>
             <ul className="listado-tareas">
-                {puestos.length === 0 
-                    ? <li className="tarea"><p>No hay Tareas</p></li>
-                    :   puestos.map( puesto => {
+                {puestossector.length === 0 
+                    ? <li className="tarea"><p>No hay Puestos</p></li>
+                    :   puestossector.map( puesto => {
                             return <Puesto key={puesto.id} puesto={puesto} />
                         })
                 }

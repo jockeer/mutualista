@@ -1,4 +1,4 @@
-import { FORMULARIO_PROYECTO } from '../../types'
+import { FORMULARIO_PROYECTO, PUESTOS_SECTOR } from '../../types'
 
 export default (state, action) => {
     switch(action.type){
@@ -6,6 +6,13 @@ export default (state, action) => {
             return {
                 ...state,
                 formulario: true
+            }
+        case PUESTOS_SECTOR:
+            return{
+                ...state,
+                puestossector: state.puestos.filter( puesto => {
+                    return puesto.sectorId === action.payload
+                })
             }
         default:
             return state;
