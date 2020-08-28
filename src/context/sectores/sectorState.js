@@ -6,12 +6,6 @@ import { OBTENER_SECTORES,SECTOR_ACTUAL } from '../../types'
 
 
 const SectorState = props => {
-    const sectores = [
-        { id:1, nombre: ' Sector Carne '},
-        { id:2, nombre: ' Sector Frutas '},
-        { id:3, nombre: ' Sector Ropa'},
-        { id:4, nombre: ' Sector Medicinas'},
-    ]
 
     const initialState = {
         sectores : [],
@@ -24,10 +18,12 @@ const SectorState = props => {
    //serie de funciones para el CRUD
 
    // Obtener los sectores
-   const obtenerSectores = () => {
+   const obtenerSectores = async () => {
+       const API = await fetch('http://localhost:4000/api/obtenerSectores')
+       const repuesta = await API.json()
         dispatch({
             type: OBTENER_SECTORES,
-            payload: sectores
+            payload: repuesta
         })
    }
 

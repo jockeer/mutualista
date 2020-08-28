@@ -12,7 +12,7 @@ const Sector = ({sector}) => {
     const {obtenerPuestos} = puestosContext
 
     const seleccionarSector = () =>{
-        sectorActual(sector.id)//fijar un sector actual
+        sectorActual(sector.id) // fijar un sector actual
         obtenerPuestos(sector.id)
     }
 

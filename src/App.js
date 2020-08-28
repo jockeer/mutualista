@@ -3,6 +3,7 @@ import Login from './components/auth/Login'
 import NuevaCuenta from './components/auth/NuevaCuenta'
 import Home from './components/Home'
 import DetallePuesto from './components/puestos/DetallePuesto'
+import Reportes from './components/Reportes'
 
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
@@ -21,6 +22,7 @@ function App() {
             <Route exact path="/nueva-cuenta" component={NuevaCuenta}/>
             <Route exact path="/home" component={Home}/>
             <Route exact path="/detalle-puesto/:id" component={DetallePuesto}/>
+            <Route exact path="/reportes" component={Reportes}/>
           </Switch>
         </Router>
 

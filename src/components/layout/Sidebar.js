@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import ListadoSectores from '../puestos/ListadoSectores'
 const Sidebar = () => {
@@ -10,6 +11,7 @@ const Sidebar = () => {
                 <h2>Sectores</h2>
                 <ListadoSectores />
             </div>
+            <Link to='/reportes' className="btn-detalle btn-block">Reportes</Link>
         </aside>
      );
 }

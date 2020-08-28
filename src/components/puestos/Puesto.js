@@ -18,7 +18,7 @@ const Puesto = ({puesto}) => {
                     }
 
                 </div>
-                <Link to={`/detalle-puesto/${puesto.id}`} className="btn-detalle">Ver Detalle</Link>
+                <Link to={`/detalle-puesto/${puesto.idpuesto}`} className="btn-detalle">Ver Detalle</Link>
             </div>
             <div className="card-footer">
             </div>
