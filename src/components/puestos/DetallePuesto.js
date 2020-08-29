@@ -1,10 +1,11 @@
 import React, {Fragment,useContext,useEffect,useState} from 'react';
 
 import BarraDetalle from '../layout/BarraDetalle'
-import puestoContext from '../../context/puestos/puestoContext'
+// import puestoContext from '../../context/puestos/puestoContext'
 
 import axios from 'axios';
 import Guardia from '../puestos/Guardia';
+import Vendedor from '../puestos/Vendedor'
 
 const DetallePuesto = ({match}) => {
 
@@ -14,31 +15,34 @@ const DetallePuesto = ({match}) => {
     const [infoPuesto, guardarInfoPuesto] = useState({})
     const [listaPersonas, guardarListaPersonas] = useState([])
     const [listaGuardias, guardarListaGuardias] = useState([
-        {id:'1',nombre:'juan'},
-        {id:'2',nombre:'Pedro'},
-        {id:'3',nombre:'Daniel'},
     ])
 
     useEffect(() => {
         const traerPuestoElegido =  async () => {
-            const API =`http://localhost:4000/api/obtenerPuesto/${match.params.id}`;
+            const APIINFOPUESTO =`http://localhost:4000/api/obtenerPuesto/${match.params.idpuesto}`;
+            const APILISTAPERSONAS =`http://localhost:4000/api/obtenerPersonas/${match.params.idpuesto}`;
+            const APILISTAGUARDIAS =`http://localhost:4000/api/obtenerGuardias/${match.params.idsector}`;
             
             
-            const [info,personas] = await Promise.all([
-                axios(API)
+            const [info,personas,guardias] = await Promise.all([
+                axios(APIINFOPUESTO),
+                axios(APILISTAPERSONAS),
+                axios(APILISTAGUARDIAS)
             ])
             guardarInfoPuesto(info.data[0])  
+            guardarListaPersonas(personas.data)  
+            guardarListaGuardias(guardias.data)  
         }
 
         traerPuestoElegido()
     }, [])
     
-    const {id, nombre, idsector} = infoPuesto
+    const { nombre} = infoPuesto
     return ( 
         <Fragment>
             <BarraDetalle/>
             <div className="container">
-                <h3>Nombre del Puesto: {nombre}</h3>
+                <h2 className="nombrePuesto">{nombre}</h2>
                 <h3>Sector: Sector 1</h3>
                 <h2>Guardias del Sector</h2>
                     <ul className="listado-guardia">
@@ -53,12 +57,14 @@ const DetallePuesto = ({match}) => {
 
                 <h2>Personas del puesto</h2>
                 <ul className="listado-guardia">
-                    <li>Nombre Completo, Cargo, telefono</li>
-                    <li>Persona 2</li>
-                    <li>Persona 3</li>
-                    <li>Persona 4</li>
-                    <li>Persona 5</li>
-                </ul>
+                        {listaPersonas.length === 0
+                            ? <p className="tarea">no hay personas</p>
+                            : listaPersonas.map(persona => {
+                                 return <Vendedor key={persona.id} persona={persona}/>
+                          })
+                        }
+                        
+                    </ul>
                 
             </div>       
         </Fragment>

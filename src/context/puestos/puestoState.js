@@ -7,13 +7,7 @@
 
     const PuestoState = props => {
         const initialState = {
-            puestos : [
-                { id:1, nombre: 'Puesto 1', dueno:'Daniel Gorianz', encargado:'Ismael Aliaga', ultimoPago: '27/08/2020', estado: true, sectorId:1},
-                { id:2, nombre: 'Puesto 2', dueno:'Pedro Mendoza', encargado:'Ismael Aliaga', ultimoPago: '27/08/2020', estado: false, sectorId:2},
-                { id:3, nombre: 'Puesto 3', dueno:'Carlos Gutierrez', encargado:'Ismael Aliaga', ultimoPago: '27/08/2020', estado: true, sectorId:2},
-                { id:4, nombre: 'Puesto 4', dueno:'Pablo Hurtado', encargado:'Ismael Aliaga', ultimoPago: '27/08/2020', estado: true, sectorId:3},
-                { id:5, nombre: 'Puesto 5', dueno:'Rodrigo Tapari', encargado:'Ismael Aliaga', ultimoPago: '27/08/2020', estado: true, sectorId:4}
-            ],
+            puestos : [],
             formulario : false,
             puestossector:null,
             puesto:null

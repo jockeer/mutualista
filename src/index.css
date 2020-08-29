@@ -22,6 +22,16 @@ body {
   font-size: 1.6rem;
   font-family: var(--textFont);
 }
+.tabla{
+  width: 100%;
+  padding: 15px 0 30px 0;
+  border-collapse: collapse;
+}
+.tabla th{
+  background-color: var(--gris2);
+  color: white;
+  padding: 5px 0;
+}
 
 
 h1, h2 {
@@ -39,6 +49,21 @@ h1 {
 }
 h2 {
   font-size: 2.4rem;
+  text-align: left;
+  padding: 30px 0;
+  margin: 0;
+}
+h5{
+  font-family: var(--headingFont);
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-align: center;
+  color: var(--gris2);
+  font-size: 30px;
+}
+.nombrePuesto{
+  font-size: 40px;
+  text-decoration: underline;
 }
 ul {
   list-style: none;
@@ -48,6 +73,36 @@ ul {
 a {
   text-decoration: none;
   color: var(--gris2);
+}
+td{
+  padding: 15px 5px;
+}
+tr:hover{
+  background: rgba(0, 0, 0, 0.05);
+}
+.formReporte{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+select{
+  margin: 0;
+  border-radius: 5px;
+  appearance:none;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,0.3); 
+}
+.buttonBuscar{
+  background: var(--gris3);
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 20px;
+  transition: .2s;
+}
+.buttonBuscar:active{
+  transform: scale(.9);
 }
 
 /** BOTONES **/
@@ -209,7 +264,8 @@ aside  {
 }
 
 .tarea {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
   justify-content: space-between;
   background-color: var(--blanco);
   padding: .5rem 2rem;
@@ -266,12 +322,44 @@ aside  {
 }
 .completo,
 .correcto {
-  background-color: rgba(154, 252, 154, .3);
+  background-color: rgba(154, 252, 154, 0.473);
   color: var(--gris3);
   border-radius: 5px;
   text-align: center;
   padding: 5px 0;
-  display: block;
+  width: 90%;
+}
+.encargado{
+  background-color: rgba(250, 252, 154, 0.76);
+  color: var(--gris3);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0;
+  width: 90%;
+}
+.inquilino{
+  background-color: rgba(154, 232, 252, 0.76);
+  color: var(--gris3);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0;
+  width: 90%;
+}
+.pagoaldia{
+  background-color: rgba(154, 252, 154, 0.473);
+  color: var(--gris3);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0;
+  
+}
+.pagoretrasado{
+  background-color: rgba(255, 178, 178, .4);
+  color: var(--gris3);
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px 0;
+  
 }
 .incompleto{
   background-color: rgba(255, 178, 178, .4);
@@ -328,9 +416,12 @@ aside  {
 }
 
 .campo-form {
-    display: flex;
-    margin-bottom: 2rem;
-    align-items: center;
+  display: flex;
+  margin-bottom: 2rem;
+  align-items: center;
+}
+.campo-form.btt{
+  margin: 0;
 }
 .campo-form:last-of-type {
   margin: 0;
@@ -432,6 +523,7 @@ aside  {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  background: white;
 }
 
 @media (min-width: 576px){
